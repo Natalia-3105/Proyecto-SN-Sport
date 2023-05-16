@@ -1,8 +1,6 @@
-#SnSports
+#SnSports 
 
-Temática del Market Place:
-
-|TIENDA DEPORTIVA. 
+E-Commerce de TIENDA DEPORTIVA. 
 
 |Venta de artíclos deportivos, prendas y productos relacionados.
 Nuestro objetivo será el de satisfacer las necesidades de los compradores, dependiendo del tipo de deporte que realice, contar con variedad de talles, marcas, entre otros.
