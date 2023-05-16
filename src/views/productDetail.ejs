@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<%- include("partials/head") %>
+</head>
+
+<body>
+	<!-- Encabezado -->
+		<%- include("partials/header") %>
+	<!-- Fin Encabezado -->
+
+
+    <section class="u-section-row padding-tb detalle">
+      <div class="r-40">
+        <img class="img-destacada" src="/images/product/<%= product.images[0].name_archive %>" />
+        <div class="galeria">
+          <img class="img-small" src="/images/product/<%= product.images[1].name_archive %>" />
+              <img class="img-small" src="/images/product/<%= product.images[2].name_archive %>" />
+              <img class="img-small" src="/images/product/<%= product.images[3].name_archive%>" />
+              <img class="img-small" src="/images/product/<%= product.images[4].name_archive %>" />
+        </div>
+      </div>
+
+      <div class="r-60 center padding-pr">
+
+        <!-- Nombre del Producto -->
+        <h2 class="nombre"><%= product.name %></h2>
+        
+        <!-- Precios -->
+        <p class="descuento"><s><%= product.price %></s> <strong>$<%= product.discount %></strong></p>
+
+        <!-- Descripción -->
+        <p class=""> <%= product.description %></p>
+        <br >
+        <!-- Caracteristicas -->
+          <h5>Caracteristicas:</h5>
+          <div class="table" id="results">
+            <div class='theader'>
+              <div class='table_header'>Genero</div>
+              <div class='table_header'>Marca</div>
+              <div class='table_header'>Material</div>
+            </div>
+            <div class='table_row'>
+              <div class='table_small'>
+                <div class='table_cell'>Genero</div>
+                <div class='table_cell'><%= product.genre.genre %></div>
+              </div>
+              <div class='table_small'>
+                <div class='table_cell'>Marca</div>
+                <div class='table_cell'><%= product.brand.name %></div>
+              </div>
+              <div class='table_small'>
+                <div class='table_cell'>Material</div>
+                <div class='table_cell'><%= product.material.type %></div>
+              </div>
+            </div>
+          </div>
+
+        <!-- Seleccionar Color -->
+<div class="w-100 flex">
+
+  <div class="r-50" id="colorCard" style="padding: 10px;">         
+    <h5>Seleccione el color:</h5>
+    <select name="colors" id="colors"  style="border: none;">
+      <% for (let i = 0; i < product.colors.length; i++) { %>
+        <option value="<%= product.colors[i].color %>"><%= product.colors[i].color %></option>
+      <% } %>
+    </select>
+  </div>
+</div>
+          
+
+        <!-- Seleccionar Talle -->
+        <div class="w-100 ">
+                    
+          <h5>Seleccione el Talle:</h5>
+          <ul class="caja-talles">
+           <% for( let i = 0; i < product.sizes.length; i++ ) { %>
+                <li class="div-talles"><%= product.sizes[i].size %>
+    <input type="radio" name="sizes" id="sizes" >
+                </li>
+           <% } %>
+            </ul>
+        </div>
+
+
+        <div class="w-100 ">
+          <h5>Cantidad:</h5>
+          <div class="contador">
+            
+            <div class="quantity caja-contador">
+              <a href="#" class="negpos">-</a>
+              <input type="number"  class="nume" value="1" size="4" placeholder="" inputmode="numeric" />
+              <a href="#" class="negpos">+</a>
+            </div>
+            <a href="/productCart" class="submit" >Agregar al carrito <i class="fas fa-shopping-bag fa-eye"> </i></a>
+          </div>
+        </div>
+
+      </div>
+      
+
+    </section>
+    
+  <!-- footer -->
+  <%- include("partials/footer") %>
+
+  </body>
+</html>

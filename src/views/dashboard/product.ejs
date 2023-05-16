@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('partialsDashboard/head') %>
+</head>
+
+    <body class="dashboard">
+
+    <%- include('partialsDashboard/header') %>
+
+    <!-- row section -->
+    <div class="u-section-row padding-tb">
+
+            <h2 class="das-titulo">Productos</h2>
+
+            <!-- Body Dashboard -->
+            <div class="das-body">
+
+                <div class="productDetail">
+
+
+                    <!-- HACER EL FOREACH -->
+                    <% products.forEach(product => { %>
+                        <article class="productos">
+                            <div class="efect">
+                                <img class="img-product efect-img1" src="/images/product/<%= product.images[0].name_archive %>" alt="Imagen remera">
+                                <img class="img-product efect-img2" src="/images/product/<%= product.images[1].name_archive %>" alt="Imagen remera">
+                                </div>
+                            <div class="div-productos">
+
+                                <h4 class="nombre"><%= product.name %></h4>
+
+                                <p class="descuento"><s><%= product.price %></s> <strong>$<%= product.discount %></strong></p>
+
+                                <div class="botones">
+                                    <a href="../<%= product.id %>/productDetail" class="submit"><span class="fas fa-eye"></span></a>
+
+                                    <a href="<%= product.id %>/editProduct" class="submit"><span class="fas fa-pencil-alt"></span> </a>
+
+                                    <form class="botones" action="/dashboard/<%= product.id %>?_method=delete" method="POST">
+                                        <button type="submit" href="#" class="rest"><span class="far fa-trash-alt"></span></button> 
+                                    </form>
+                                    
+                                </div>
+
+
+                            </div>     
+                    </article>
+                    <% }) %>
+                    <!-- HACER EL FOREACH -->
+
+                </div>
+            </div>
+            <!-- Fin Body Dashboard -->
+
+    </div>
+    <!-- Fin row section -->
+
+    <!-- Copyright -->
+    <%- include('partialsDashboard/footer') %>
+        
+    </body>
+
+</html>

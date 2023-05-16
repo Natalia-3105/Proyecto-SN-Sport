@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<%- include("partials/head") %>
+</head>
+
+<body>
+	<!-- Encabezado -->
+		<%- include("partials/header" ) %>
+	<!-- Fin Encabezado -->
+
+
+	<main class="u-section-row padding-tb">
+
+		
+
+		
+
+		<section class="ofertas">
+
+			<div class="container-ofertas">
+				<h2>ENCONTRA LO QUE NECESITAS</h2>
+			</div>
+
+			<div class="productDetail">
+				<!-- HACER EL FOREACH -->
+			
+				<% products.forEach(product =>  { %>
+
+					<%- include("partials/product-card",{ product })%> 
+				<% }) %>
+				
+			<!-- FIN DEL FOREACH -->
+			</div>
+
+		</section>
+
+		<section class="banners">
+	
+			<div class="publicidad">
+				<img src="/images/banner-legal_accion-medias.jpg" alt="Imagen 1">
+			</div>
+	
+			<div class="image-container">
+				<div class="banner">
+					<img src="/images/bannhombre1.jpg" alt="banner-hombre">
+					<a href="/storeHombre"><span class="text">Hombre</span></a>
+				</div>
+				<div class="banner">
+					<img src="/images/banner.puma.jpg" alt="banner-mujer">
+					<a href="/storeMujer"><span class="text">Mujer</span></a>
+					
+				</div>
+				<div class="banner">
+					<img src="/images/banner_niño.jpg" alt="banner-niños">
+					<a href="/storeKids"><span class="text">Niños</span></a>
+					
+				</div>
+			</div>
+
+		</section>
+
+
+	</main>	
+
+		
+
+<!-- footer -->
+<%- include("partials/footer") %>
+
+</body>
+</html>

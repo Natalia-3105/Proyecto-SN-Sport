@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("partials/head") %>
+
+</head>
+<body>
+    <!-- Encabezado -->
+    <%- include("partials/header") %>
+        <!-- Fin Encabezado -->
+        <main class="u-section-row padding-tb">
+            <section class="main_login">
+                <form action="/user/guardarUsuario/?_method=put" method="post" enctype="multipart/form-data"
+                            class="formulario bg-gris-claro" >
+                <%- include("partials/formularioUsuario") %>
+                <div class="botones">
+                    <button class="submit" type="submit">Guardar</button>
+                    <button class="rest" type="reset">Borrar</button>
+                </div>
+                </form>
+            </section>
+        </main>
+        <!-- footer -->
+        <%- include("partials/footer") %>
+
+</body>
+</html>

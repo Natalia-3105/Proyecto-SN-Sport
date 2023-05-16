@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <%- include('partialsDashboard/head') %>
+</head>
+
+<body class="dashboard">
+
+  <%- include('partialsDashboard/header') %>
+
+    <!-- row section -->
+    <div class=" u-section-row padding-tb">
+
+      <h2 class="das-titulo">Editar Producto: <%= product.name %>
+      </h2>
+
+      <!-- Body Dashboard -->
+      <div class="das-body">
+
+        <!-- Formulario Editar Producto -->
+        <form class="formulario" action="/dashboard/<%= product.id %>?_method=put" method="POST"
+          enctype="multipart/form-data">
+
+          <!-- Columna Izquierda -->
+          <div class="r-40">
+
+            <div style="background-image: url(/images/product/<%= product.images[0].name_archive %>); width:100% ; height: 300px; ">
+              <label for="images">Imagen destacada</label>
+              <input type="file" name="images" accept="image/png,image/jpeg,image/jpg" class="border-box" multiple>
+
+            </div>
+            <div class="galeria">
+              <img class="img-small" src="/images/product/<%= product.images[1].name_archive %>" />
+              <img class="img-small" src="/images/product/<%= product.images[2].name_archive %>" />
+              <img class="img-small" src="/images/product/<%= product.images[3].name_archive%>" />
+              <img class="img-small" src="/images/product/<%= product.images[4].name_archive %>" />
+            </div>
+          </div>
+          <!-- Fin Columna Izquierda -->
+
+          <!-- Columna Derecha -->
+          <div class="r-60 padding-pr">
+
+            <div class="w-100">
+              <label for="name" class="form-label">Nombre del producto:</label>
+              <input type="text" id="name" name="name" placeholder="<%= product.name %>" class="w-100"
+                value="<%= product.name %>" />
+                <% if (locals.errors && errors.name) { %>
+                  <p class="errorMsg">
+                  <%= errors.name.msg %>
+                  </p>
+              <% } %>
+            </div>
+
+            <div class="w-100">
+              <label for="description" class="form-label">Descripcion producto:</label>
+              <textarea name="description" id="description" class="w-100" rows="8"
+                cols="50"><%= product.description %></textarea>
+                <% if (locals.errors && errors.description) { %>
+                  <p class="errorMsg">
+                  <%= errors.description.msg %>
+                  </p>
+              <% } %>
+            </div>
+
+            <div class="w-100 ">
+              
+              <div class="w-100">
+                <label for="category" class="form-label">Categoría:</label>                     
+                <select name="category" id="category" class="form-input" >
+
+                  <% for( let i = 0; i < category.length; i++ ) { %>
+                    <option value="<%= category[i].id %>"<%=product.category_id== category[i].id? "selected" : "" %>><%=category[i].type %></option>
+                  <% } %>
+                </select>
+            </div>
+          </div>
+            <div class="w-100 flex">
+
+            <div class="r-25">
+                   
+              <label for="colors" class="form-label">Seleccione el color:</label>                        
+                    <ul class="caja-talles">
+                    <% for( let i = 0; i < colors.length; i++ ) { %>
+                      <li class="div-talles"><%=colors[i].color %>
+                        <input type="checkbox" name="colors" id="colors" value="<%=colors[i].id %>"
+                        <% for( let j = 0; j < productColors.length; j++ ) { %> 
+                        <%=productColors[j].color_id== colors[i].id? "checked" : "" %>
+                        <% } %>>
+                      </li>
+                      <% } %>
+                    </ul>
+              </div>
+
+            <div class="r-25">
+                   
+              <label for="sizes" class="form-label">Seleccione el Talle:</label>                        
+                    <ul class="caja-talles">
+                    <% for( let i = 0; i < sizes.length; i++ ) { %>
+                      <li class="div-talles"><%=sizes[i].size %>
+                        <input type="checkbox" name="sizes" id="sizes" value="<%=sizes[i].id %>"
+                        <% for( let j = 0; j < productSizes.length; j++ ) { %> 
+                        <%=productSizes[j].size_id== sizes[i].id? "checked" : "" %>
+                        <% } %>>
+                      </li>
+                      <% } %>
+                    </ul>
+              </div>
+          </div>
+            <div class="w-100 flex">
+              <div class="r-33">
+                <label for="genre" class="form-label">Genero:</label>
+                <select name="genre" id="genre" class="form-input" >
+                  <% for( let i = 0; i < genre.length; i++ ) { %>
+                    <option value="<%= genre[i].id %>"<%=product.genre_id== genre[i].id? "selected" : "" %>><%=genre[i].genre %></option>
+                  <% } %>
+                 
+              </select>
+               
+              </div>
+
+              <div class="r-33">
+                <label for="brand" class="form-label">Marca:</label>
+                <select name="brand" id="brand" class="form-input" >
+                  <% for( let i = 0; i < brand.length; i++ ) { %>
+                    <option value="<%= brand[i].id %>"<%=product.brand_id== brand[i].id? "selected" : "" %>><%= brand[i].name %></option>
+                  
+                  <% } %>
+                 
+              </select>
+              </div>
+
+              <div class="r-33">
+                <label for="material" class="form-label">Material:</label>
+
+                <select name="material" id="material" class="form-input" >
+                  <% for( let i = 0; i < material.length; i++ ) { %>
+                    <option value="<%= material[i].id %>"<%=product.material_id== material[i].id? "selected" : "" %>><%= material[i].type %></option>
+                  
+                  <% } %>
+                 
+              </select>
+
+              </div>
+            </div>
+
+            <div class="r-50">
+              <label for="price" class="form-label">Precio:</label>
+              <input type="text" id="price" name="price" placeholder="<%= product.price %>" class="w-100"
+                value="<%= product.price %>" />
+                <% if (locals.errors && errors.price) { %>
+                  <p class="errorMsg">
+                  <%= errors.price.msg %>
+                  </p>
+              <% } %>
+            </div>
+
+            <div class="r-50">
+              <label for="discount" class="form-label">Precio Rebajado:</label>
+              <input type="text" id="discount" name="discount" placeholder="<%= product.discount %>" class="w-100"
+                value="<%= product.discount %>" />
+            </div>
+            <div class="w-100 botones padding-tb">
+              <button type="submit" class="submit ">Guardar cambios </i></button>
+        </form>
+       
+        <!-- Formulario Boton Eliminar Producto -->
+        <form action="/dashboard/<%= product.id %>?_method=delete" method="POST">
+          <button type="reset" class="submit far fa-trash-alt rest"> Eliminar </i></button>
+        </form>
+        <!-- Fin Formulario Boton Eliminar Producto -->
+
+      </div>
+
+    </div>
+    <!-- Fin Columna Derecha -->
+
+
+
+
+    </div>
+    <!-- Fin Body Dashboard -->
+
+    </div>
+    <!-- Fin row section -->
+
+    <!-- Copyright -->
+    <%- include('partialsDashboard/footer') %>
+
+</body>
+
+</html>

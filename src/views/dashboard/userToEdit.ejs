@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('partialsDashboard/head') %>
+</head>
+
+    <body class="dashboard">
+
+    <%- include('partialsDashboard/header') %>
+
+    <!-- row section -->
+    <div class=" u-section-row padding-tb">
+
+            <h2 class="das-titulo">Editar usuario</h2>
+            <!-- Body Dashboard -->
+            <div class="das-body">
+
+                <!-- Formulario Crear Usuario -->
+               
+                      <form action="/user/editUserAdmin/?_method=put" method="post" enctype="multipart/form-data"
+                            class="formulario bg-gris-claro" >
+
+                <%- include("../partials/formularioUsuario") %>
+                              
+                              <div class="w-100">
+                                <label for="role_id" class="form-label">Credenciales</label>
+                                <select name="role_id" id="role_id" class="form-input">
+                                  <option value="">Elegí</option>
+                                  <option value="2" <%=locals.oldValues.role_id=="2" ? "selected" : "" %>>Cliente</option>
+                                  <option value="1"  <%=locals.oldValues.role_id=="1" ? "selected" : "" %>>Administrador</option>
+                                </select>
+                              </div>
+                  
+                              <div class="w-100 botones padding-tb">
+                                      <a class="rest" href="/user/editUser">Cancelar</a>
+                                      <button class="submit" type="submit">Guardar</button>
+
+                              </div>
+                      </form>
+                  </section>
+
+                <!-- Fin Formulario Crear Producto -->
+
+            </div>
+            <!-- Fin Body Dashboard -->
+
+    </div>
+    <!-- Fin row section -->
+
+    <!-- Copyright -->
+    <%- include('partialsDashboard/footer') %>
+        
+    </body>
+
+</html>
